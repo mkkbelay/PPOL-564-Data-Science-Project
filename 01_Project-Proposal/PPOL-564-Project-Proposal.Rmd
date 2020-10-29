@@ -7,3 +7,21 @@ output: html_document
 
 1. A high-level statement of the problem you intend to address or the analysis you aim to generate;
 
+##draft: 
+The goal of this analysis is to pull together the COVID data and assess which states have the highest reported infections by race and also the lowest by share of population. Aims to characterize poverty rates. Are states with higher rates of caes and deaths amongst racial minorities also states who have put in the least effort to expand and maintain ACA? Are these states spending money on health disparities and poverty reduction. Characterize states by % enrolled in ACA; percent uninsured; amount spent on social services. Identify states where percent of cases and deaths is greater than population percent. Mention series of essays from the Atlantic....
+
+Data Sources
+Initially states were not releasing demographic data alongside COVID cases and deaths. Repeated calls by the public has promopted states to ….. Currently there are 50 states reporting state data; (Johns Hopkins). My data source is coming from the covid19 race data tracker developed and maintained by Boston University  and The Atlantic. Scrape also page with spreadsheet to retreive total numbers collected from state health departments (no percentages). .Also find data tracking which states have expanded ACA and to what extent..(Kaiser)...
+
+
+Data visualization
+Overall line graph, represent races by different colors, have states on x axis, amount/percentage on y axis
+visualize which group has highest reported cases and deaths per state,.... visualize similarity across states?
+
+
+Visualize state level data on ACA:, are there similarities in which part of ACA they adopted and the outcomes of racial minorities in covid and other healthdisparities???
+
+
+Statistical learning component: run model to see if there is a relationship between state readiness to adopt ACA/perception of ACA and health disparities in covid
+
+Success: practicing skills from class using different data sources; get comfortable with scraping tables/data ...make use of groupby and pivot tables to change unit of observation; view the dataset from different perspective. gain experience with graphing, specfically creating visually appealing and easy to follow plots. combine data across different data sources with different units of observations (use stack unstack, merge (anti; full)) 
