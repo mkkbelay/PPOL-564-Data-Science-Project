@@ -1,0 +1,103 @@
+---
+title: "Exploring COVID-19 Health Disparities"
+author: "Merykokeb Belay"
+date: "12/18/2020"
+output: html_document
+---
+• Introduction
+In light of the data released throughout this pandemic, researchers have found that the effect of this disease has been particularly difficult on certain communities more than others. According to data collected and analyzed by The COVID Tracking Project at The Atlantic, ‘COVID-19 is affecting Black, Indigenous, Latinx, and other people of color the most.” (1)  When disparities in health outcomes occur, public health officials often look to social determinants of health to assess how a person’s health outcome is closely tied to their surroundings and overall well being. The aim of this project is to use the framework of social determinants of health to examine the factors that contribute to health disparities in the COVID-19 pandemic. To do this, this project makes use of statistical learning tools to a series of county-level characteristics, ranging from measuring the amount of air pollution to the level of food insecurity, to predict the level of disparity in county amongst a county’s Black, Lantinx, Indigenous, and Asian American population. The variable being predicted (henceforth referred to as the outcome variable) measures if a specific race/ethnicity’s share of COVID-19 cases surpasses their share of the population. The variables being used to make this prediction (henceforth referred to as features) consist of social, economic, educational, health-related, and environmental characteristics of a county. This report provides a detailed walk-through of the data sources as well as the data cleaning and analytic techniques used to predict the level of disparity for Black, Latinx, Asian American, and Indigenous communities in counties. 
+Problem Statement and Background
+In defining what determines health, Healthy People 2020’s one of the four overarching goals is social determinants of health. Recognizing the importance of external factors on health outcomes, Healthy People 2020 lists some descriptions of social determinants of health According to the Johns Hopkins University School of Public Health, a health disparity is defined as how is a person’s environment, economic well being, access to health care, access to food making them more at risk to be infected or affected by an illness.
+** pre-existing conditions are also tied to social determinants of health. In a study examining diabetes in African Americans……… A piece by propulica found that amputations……
+While work using statistical learning techniques to predict disparity is not as present, the way in which institutions and surrounding imporve and deteroriete a person’t health have been studied for a while. There is something to be said about the ineffectiveness of statistical learning to accurately predict disparities. The techniques depend on what you feed them and what you feed them can be highly flawed. As it will be mentioned later on, the data is collected by state agencies primarily but it can be dirty, full of mistakes,and it’s own issues. Getting the data ready for the techniques is also another source of error that can lead to ……. As such, the results from this project are not meant to be final in any way. Given that this field of research is vast, widely studied and understood, the goal of this project is truly exploratory and to use the ffunctionionalities of the pandas data frame and statistical learning techniques to examine how these statistical learning techniques do when fed these variables.. Many policymakers, researchers, citizens know how ineffective government institutions, inadequate housing, racial inequities, lack of health access, poverty and many other factors contribut to a person’s health outcome. They can exasperate diseasese and make communities that have been marginzlized most exposed to healtha and natural disasters. 
+Data
+New York Times 
+The primary source of data for this project is a New York Times data set of county-level COVID-19 cases. At the beginning of the pandemic, federal agencies were not forthcoming with COVID-19 related data. Few states were reporting race and ethnicity breakdowns of COVID-19 cases and the data from these states were filled with inconsistencies and errors (2). After filing a Freedom of Information Act lawsuit against the CDC, The Times was able to access nearly 1.5 million case records collected from March 2020 until May 2020. These records include county-level COVID-19 race and ethnicity data (3). As of now, The Times has made 974 of the case files publicly available in an excel spreadsheet via GitHub (4). While missingness will not be an issue in this dataset, the inconsistencies in reporting COVID-19 race and ethnicity data may lead  time period  represented in this data spans just the first few months of the pandemic for 974 out of over 3,000 counties in the United States. of COVID-19 race and ethnicity data  this opens up possibilities of issuesThe data was collected by directly downloading the excel file. The unit of observation in this dataset is state-county level. It provides information on  the total number of COVID-19 cases in each of the 974 counties, as well as a breakdown of those cases by race and ethnicity--these are the key variables of interest as they were used to create the outcome variables.  The dataset also includes population estimates of each of the 974 counties by race and ethnicity. However, since population estimates for Native Americans and Asian Americans were missing, the entire population-related variables from this data set were not used in any analysis;  instead, population estimates were calculated using data obtained directly from the U. S. Census Bureau.
+United States Census Bureau
+The U.S. Census Bureau provides a publically available  excel spreadsheet of population estimates by age, race, and hispanic origin for each county in the United States. This data set represents annual county resident population estimates as of July 1, 2019 (5). Like The Times data set, this information was also obtained by downloading the excel sheet from the website. The unit of observation for the raw data set is state-county level.  Additionally, county-level poverty rates and median household income were also obtained from the U. S. Census Bureau. The Bureau’s Small Area Income and Poverty Estimates (SAIPE) program provides estimates for 2018 in a publicly available excel spreadsheet. This data was also downloaded from the website and is organized by state-county level (6).
+County Health Rankings and Roadmaps 
+Another vital data source for this project is the County Health Rankings and Roadmaps, a collaborative program between the Robert Wood Johnson Foundation and the University of Wisconsin Population Health Institute (7). This program uses more than 30 measures to understand the health outcomes (i.e., how healthy a county’s residents are) and health factors (i.e., things in the external environment that contribute to health outcomes) of a county. The program compiles these measures from a wide range of federal agencies and from different time periods. Since the data spans different time periods and was collected by different agencies which use different collection methods, missing values are likely to occur. The data collected by the Rankings program to generate a 2020 edition of the county rankings is freely available on their website in an excel spreadsheet--this data was collected by directly downloading the excel sheet from the website. While the dataset contains over 700 variables, this project uses only 27 variables that characterize the socioeconomic, environmental, and health-related factors of a county. Similar to The Times dataset, the unit of observation is state-county level.
+Bureau of Economic Analysis
+While the Rankings data set does have economic indicators, it lacks county-level GDP data. Therefore, county-level GDP data was obtained from the Bureau of Economic Analysis at the U.S. Department of Commerce (8). The measure of GDP used is ‘GDP by county and metropolitan area across all industries’ (8). As with the other data sets, this information was downloaded from the Bureau of Economic Analysis’ website. The unit of observation is state-county level. 
+U.S. Bureau of Labor Statistics.
+Lastly, county-level unemployment rate was obtained from the U.S. Bureau of Labor Statistics. This agency provides annual labor force data by county. This project used data provided by the agency from 2019, which was publicly available in an excel spreadsheet on their website (9). The unit of observation is state-county level.
+Data Wrangling 
+The data wrangling portion of this project was primarily done using the pandas package in Python. The steps taken to modify each dataset prior to merging all the data sets into a single dataframe is outlined below:
+The New York Times COVID-19 data set was already arranged by state-county level. The main modification to this data set involved using pandas built-in 
+Analysis 
+The analysis portion of this project began by conducting three separate modeling attempts. These attempts were undertaken to understand if any of these techniques continuously performed well when presented with different configurations of the outcome and feature variables. Note that these three modeling attempts will not be discussed in detail because their purpose was to inform the processing of the outcome and feature variables and the selection of the modeling techniques for a fourth and final attempt. 
+Initially, five modeling techniques (Linear Model, K-nearest neighbours, Bagging, Decision Tree and Random Forest) were considered. To rule out the worst performers, The analysis portion of this project involves using statistical learning methods to predict the level of disparity for Black, Native American, Hispanic, and Asian American communities in the 974 counties represented in the New York Times dataset. Statistical learning  is the use of techniques to model the relationship between an outcome variable (commonly referred to as the dependent variable) and a set of feature variables (i.e., independent variables). The main goal is to use existing data to effectively ‘train’ the modeling technique so that it can predict the value of the outcome variable in future settings using data it was not trained on. A statistical learning task is considered effective when it can predict the outcome variable with the least possible error in a setting/data set that it has not seen before. 
+For this project, the outcome variable is a continuous variable which measures whether the share of COVID-19 cases for a race/ethnicity exceeds that race/ethncity’s share of the county population. For instance, to measure the disparity within a county for a specific race/ethnicity, the percentage share of COVID-19 cases for that ethnicity was subtracted from their percentage share of the population. Given that there are four races/ethnicities of interest, four outcome variables were created. The feature variables consist of county characteristics obtained from the other data sources mentioned in the data collection section of this report. 
+Three modeling techniques (Linear Model, K-nearest neighbour (KNN), and Random Forest) were used to predict each outcome variable. The prediction process of the Linear Model is fairly similar to the standard regression framework. The key difference is that the goal of this model is to predict the dependent variable and not to infer about the relationship between dependent and independent variables. This method is  especially useful for this research project because. 
+Unlike the Linear Model, KNN and Random Forest do not depend on parameters (ex: coefficient estimates in regressions) to make their predictions. KNN technique essentially looks at the distance between the the feature variable in the unseen data set and the feature variables from the data set used to train the model. It selects the K neares neighbours (K can be any value greater than 2) that are the closest to the new data point and uses the average value of their outcome variables to make a prediction.  A set back is that when you start working with a large set of variables, it starts to breakdown.
+Random Forest feeds of the statistical concept of bootstrap aggregation wheer when you’re uncertain of uncertainty, you repeatedly take a random sample from your training data and build separate trees for each random data set and those tree make predictions then average across these predictions from the many trees to make a prediction. Take many samples of the bootstrap regression trees and summ across the observations and divide by the number of bootstraps. Random selection of features and use bagging to select random select observations . since it sampling from subset of variables  you can explore a bigger feature space of predictors. With linear model, variable selection concerns that are in regressions need to be considered. Random forest is useful for scanning features. Using previous attempts to modify feature selection and processing. 
+Results 
+
+
+
+
+
+
+
+This means that each outcome variable and set of feature variables were fed into each of the four modeling techniques inorder to determine which model predicts the outcome variable with the least error.
+
+
+
+
+
+
+
+
+
+
+
+
+Insert table of interesting metrics obtained from the county health rankings and roadmaps data frame. 
+
+
+
+
+
+
+Per the social determinants of health framework, economic status contributres to health
+
+
+
+
+
+ While COVID-19 was an unexpected pandemic in many respects, disparities in health outcomes had already been present, particularly in non-communicable diseases such as diabetes, hear pressure, ...etc…. 
+
+
+
+
+– What is the aim of the project? ∗ Summarize the problem
+∗ State your goals
+– What do you do in this report?
+∗ offer a roadmap of the project
+References
+“The COVID-19 Racial Data Tracker”. The COVID Tracking Project at The Atlantic: https://covidtracking.com/race/about. Accessed 28 October 2020.
+
+Why can’t we see all of the government’s virus data, oct, 23, 2020, Christopher J.L. Murray . New York Times. https://www.nytimes.com/2020/10/23/opinion/coronavirus-data-secrecy.html
+
+Oppel Jr, Richard A., Gebeloff, Robert, Lai, K.K. Rebecca, Wright, Will; and Smith, Mitch. The Fullest Look Yet at the Racial Inequity of Coronavirus. July 15, 2020, The New York Times. https://www.nytimes.com/interactive/2020/07/05/us/coronavirus-latinos-african-americans-cdc-data.html
+
+https://github.com/nytimes/covid-19-data/issues/381
+“2019 population estimates by Age, Sex, Race, And Hispanic Origin” https://www.census.gov/newsroom/press-kits/2020/population-estimates-detailed.html
+SAIPE State and County Estimates for 2018. United States Census Bureau. https://www.census.gov/data/datasets/2018/demo/saipe/2018-state-and-county.html
+
+“County Health Rankings and Roadmaps”https://www.countyhealthrankings.org/about-us. Accessed 3, November, 2020. 
+GDP and Personal Income. Bureau of Economic Analysis, U.S. Department of Commerce. https://apps.bea.gov/iTable/iTable.cfm?reqid=70&step=1&isuri=1&acrdn=5#reqid=70&step=1&isuri=1&acrdn=5
+Local Area Unemployment Statistics. U.S. Bureau of Labor Statistics. https://www.bls.gov/lau/tables.htm
+
+
+
+
+
+
+
+
+Meraji, Shereen Marisol. “The News Beyond The COVID Numbers”. National Public Radio. https://www.npr.org/2020/04/21/840609912/the-news-beyond-the-covid-numbers. 
+
+
+
+--for instance, in an NPR interview  from April 2020, Alexis Madrigal (a staff writer at The Atlantic and part of the founders of The COVID-19 Tracking Project) explains how “some states are reporting Hispanic as a race alongside Asian, Black, and white” while government forms consider HIspanic as an ethnicity (2). County-level information on COVID-19 data by race and ethnicity was not made available, even though the agency was recording the information. 
